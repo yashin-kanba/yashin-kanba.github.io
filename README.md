@@ -1,0 +1,1 @@
+# yashin-kanba.github.io
