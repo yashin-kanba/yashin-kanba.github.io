@@ -1,47 +1,9 @@
-body { 
-    padding: 0; 
-    margin: 0; 
-    /* 💡 追加: <body> が画面全体を占めるように設定 */
-    width: 100vw; 
-    height: 100vh;
-}
-
-#unity-container { 
-    /* 💡 修正: absolute から fixed に変更し、画面全体を覆うようにする */
-    position: fixed; 
-    width: 100%;
-    height: 100%;
-}
-
-#unity-container.unity-desktop { 
-    /* 💡 修正: 中央寄せを解除し、左上を起点 (0, 0) にする */
-    left: 0; 
-    top: 0; 
-    transform: none; 
-}
-
-/* unity-mobile クラスはHTMLから削除されているため、基本的には無視されますが、
-   念のため #unity-container の設定で上書きされています */
-#unity-container.unity-mobile { 
-    width: 100%; 
-    height: 100%; 
-}
-
-#unity-canvas { 
-    background: #231F20;
-    /* 💡 追加: canvas をコンテナ内でアスペクト比を保ちながら最大化する */
-    width: 100%; 
-    height: 100%;
-    object-fit: contain;
-}
-
-/* .unity-mobile の設定は、もはや不要ですが、修正案として残します */
-.unity-mobile #unity-canvas { 
-    width: 100%; 
-    height: 100%;
-    object-fit: contain; 
-}
-
+body { padding: 0; margin: 0 }
+#unity-container { position: absolute }
+#unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
+#unity-container.unity-mobile { width: 100%; height: 100% }
+#unity-canvas { background: #231F20 }
+.unity-mobile #unity-canvas { width: 100%; height: 100% }
 #unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none }
 #unity-logo { width: 154px; height: 130px; background: url('unity-logo-dark.png') no-repeat center }
 #unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; background: url('progress-bar-empty-dark.png') no-repeat center }
