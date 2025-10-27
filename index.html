@@ -51,22 +51,19 @@
       // happening inside the engine, and you would instead like to size up
       // the canvas DOM size and WebGL render target sizes yourself.
       // config.matchWebGLToCanvasSize = false;
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        container.className = "unity-mobile";
-        // Avoid draining fillrate performance on mobile devices,
-        // and default/override low DPI mode on mobile browsers.
-        config.devicePixelRatio = 1;
-        mobileWarning.style.display = "block";
-        setTimeout(() => {
-          mobileWarning.style.display = "none";
-        }, 5000);
-      } else {
-        canvas.style.width = "600px";
-        canvas.style.height = "600px";
-      }
+      
+   // 💡 モバイル判定の if/else ブロックを削除し、
+      // すべてのデバイスでデスクトップの強制表示設定を適用する
+      
+      // デスクトップのクラスを維持
+      container.className = "unity-desktop"; 
+      
+      // canvasをコンテナに対してフルサイズで表示（CSSと連携します）
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
+      
       loadingBar.style.display = "block";
-
+      
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
